@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 # --- CONFIGURATION ---
 @export_category("Movement Stats")
-@export var speed: float = 400.0
-@export var acceleration: float = 3000.0
-@export var friction: float = 2500.0
+@export var speed: float = 150.0
+@export var acceleration: float = 1000.0
+@export var friction: float = 1000.0
 
 @export_category("Dash Stats")
-@export var dash_speed: float = 1000.0
+@export var dash_speed: float = 500
 @export var dash_duration: float = 0.15
 @export var dash_cooldown: float = 0.8
 

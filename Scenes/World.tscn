@@ -1,19 +1,62 @@
-[gd_scene format=3 uid="uid://birvxciwqfi4r"]
+[gd_scene format=4 uid="uid://birvxciwqfi4r"]
 
 [ext_resource type="PackedScene" uid="uid://dtqlell30el1t" path="res://Scenes/player.tscn" id="1_5cjrv"]
 [ext_resource type="PackedScene" uid="uid://d3cqtcfm7fccn" path="res://Scenes/MainCamera.tscn" id="1_5nsto"]
-[ext_resource type="Texture2D" uid="uid://cvos4ggk1nfdy" path="res://icon.svg" id="2_j0p05"]
+[ext_resource type="Texture2D" uid="uid://dhqbe0ketayqj" path="res://Assets/Tileset.png" id="3_5nsto"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjpho"]
+texture = ExtResource("3_5nsto")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5nsto"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_gjpho")
 
 [node name="World" type="Node2D" unique_id=837482538]
 
 [node name="MainCamera" parent="." unique_id=118585489 node_paths=PackedStringArray("target") instance=ExtResource("1_5nsto")]
 position = Vector2(289, 63)
+zoom = Vector2(2, 2)
 target = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=1798557799 instance=ExtResource("1_5cjrv")]
+top_level = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1050105837]
-show_behind_parent = true
-position = Vector2(-8, -1)
-scale = Vector2(9.316406, 5.28125)
-texture = ExtResource("2_j0p05")
+[node name="Room_Template" type="StaticBody2D" parent="." unique_id=2077204854]
+
+[node name="Base" type="TileMapLayer" parent="Room_Template" unique_id=1799219380]
+tile_map_data = PackedByteArray("AAD9//7/AAADAAQAAAD9////AAADAAQAAAD9/wAAAAADAAQAAAD9/wEAAAADAAQAAAD+/wEAAAADAAQAAAD//wEAAAADAAQAAAAAAAEAAAADAAQAAAABAAEAAAADAAQAAAABAAAAAAADAAQAAAABAP//AAADAAQAAAABAP7/AAADAAQAAAAAAP7/AAADAAQAAAD///7/AAADAAQAAAD+////AAADAAQAAAD+/wAAAAADAAQAAAD//wAAAAADAAQAAAAAAAAAAAADAAQAAAAAAP//AAADAAQAAAD+//7/AAADAAQAAAD9/wIAAAADAAQAAAD+/wIAAAADAAQAAAD//wIAAAADAAQAAAAAAAIAAAADAAQAAAABAAIAAAADAAQAAAACAAEAAAADAAQAAAACAAAAAAADAAQAAAACAP//AAADAAQAAAACAP7/AAADAAQAAAD/////AAADAAQAAAACAAIAAAADAAQAAAACAP3/AAABAAAAAAABAP3/AAABAAAAAAAAAP3/AAABAAAAAAD///3/AAABAAAAAAD+//3/AAABAAAAAAD9//3/AAABAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAEAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAEAAAD8/wIAAAAAAAEAAAD8/wMAAAAAAAIAAAADAAMAAAACAAIAAAD9/wMAAAABAAIAAAD+/wMAAAABAAIAAAD//wMAAAABAAIAAAAAAAMAAAABAAIAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAADAAIAAAACAAEAAAADAAEAAAACAAEAAAADAAAAAAACAAEAAAADAP//AAACAAEAAAADAP7/AAACAAEAAAADAP3/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_5nsto")

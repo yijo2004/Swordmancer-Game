@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://c8mpe4b4nhbaq" path="res://Assets/Sprite-0004.png" id="2_cvnsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 40.012497
+radius = 17.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1798557799]
 physics_interpolation_mode = 1
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378997867]
-position = Vector2(6.0546875, -2.4453125)
-scale = Vector2(2.121582, 2.2153318)
+position = Vector2(3, -2)
 texture = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=161442825]
