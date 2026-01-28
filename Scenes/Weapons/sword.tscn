@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://7bmw54140ch3"]
+
+[ext_resource type="PackedScene" uid="uid://d0g6tr28kkt24" path="res://Scenes/Weapon.tscn" id="1_6wdhb"]
+[ext_resource type="Texture2D" uid="uid://clyl1yejgr6v6" path="res://Assets/sword.png" id="2_d6wag"]
+
+[sub_resource type="Animation" id="Animation_kb2vl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6j4cb"]
+resource_name = "attack"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.04, 3.03, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32), Rect2(8.05, 0, 32, 32), Rect2(-9.89, 0, 32, 32), Rect2(-4.56, 0, 32, 32), Rect2(-0.44, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.05, 3.03, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-7.78, 0), Vector2(10.44, 0), Vector2(5.21, 0), Vector2(1.035, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ksptp"]
+_data = {
+&"RESET": SubResource("Animation_kb2vl"),
+&"attack": SubResource("Animation_6j4cb")
+}
+
+[node name="Sword" unique_id=1236962454 instance=ExtResource("1_6wdhb")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1998757771]
+texture = ExtResource("2_d6wag")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+region_filter_clip_enabled = true
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=913103793]
+libraries/ = SubResource("AnimationLibrary_ksptp")
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(2132603599) index="0" unique_id=2090036232]
+position = Vector2(-1, 0)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://birvxciwqfi4r"]
+
+[ext_resource type="PackedScene" uid="uid://dtqlell30el1t" path="res://Scenes/player.tscn" id="1_5cjrv"]
+[ext_resource type="PackedScene" uid="uid://d3cqtcfm7fccn" path="res://Scenes/MainCamera.tscn" id="1_5nsto"]
+[ext_resource type="Texture2D" uid="uid://cvos4ggk1nfdy" path="res://icon.svg" id="2_j0p05"]
+
+[node name="World" type="Node2D" unique_id=837482538]
+
+[node name="MainCamera" parent="." unique_id=118585489 node_paths=PackedStringArray("target") instance=ExtResource("1_5nsto")]
+position = Vector2(289, 63)
+target = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1798557799 instance=ExtResource("1_5cjrv")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1050105837]
+show_behind_parent = true
+position = Vector2(-8, -1)
+scale = Vector2(9.316406, 5.28125)
+texture = ExtResource("2_j0p05")

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dtqlell30el1t"]
+
+[ext_resource type="Script" uid="uid://c3hasx7qafvcw" path="res://_Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c8mpe4b4nhbaq" path="res://Assets/Sprite-0004.png" id="2_cvnsp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 40.012497
+
+[node name="Player" type="CharacterBody2D" unique_id=1798557799]
+physics_interpolation_mode = 1
+script = ExtResource("1_cvnsp")
+speed = null
+acceleration = null
+friction = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378997867]
+position = Vector2(6.0546875, -2.4453125)
+scale = Vector2(2.121582, 2.2153318)
+texture = ExtResource("2_cvnsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=161442825]
+shape = SubResource("CircleShape2D_cvnsp")
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=446144434]

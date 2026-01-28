@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0g6tr28kkt24"]
+
+[ext_resource type="Script" uid="uid://dqdprrwhl20xm" path="res://_Scripts/weapon.gd" id="1_m5ws0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw2lr"]
+size = Vector2(8.25, 32)
+
+[node name="Weapon" type="Node2D" unique_id=1236962454]
+script = ExtResource("1_m5ws0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998757771]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=913103793]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2132603599]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2090036232]
+shape = SubResource("RectangleShape2D_sw2lr")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
