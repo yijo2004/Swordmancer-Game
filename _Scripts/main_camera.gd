@@ -5,9 +5,9 @@ extends Camera2D
 
 @export_category("Smoothing")
 # Lower = Smoother/Slower, Higher = Snappier
-@export var smooth_speed: float = 10.0 
+@export var smooth_speed: float = 10.0
 # How far the camera peeks towards the mouse (0.0 to 1.0)
-@export var mouse_lead: float = 0.2 
+@export var mouse_lead: float = 0.2
 
 func _process(delta: float) -> void:
 	if not target:
@@ -26,3 +26,5 @@ func _process(delta: float) -> void:
 	# 3. Smoothly interpolate (Lerp) to that position
 	# Using 'global_position' in _process ensures 144Hz+ smoothness
 	global_position = global_position.lerp(desired_position, smooth_speed * delta)
+
+# Test Comment
