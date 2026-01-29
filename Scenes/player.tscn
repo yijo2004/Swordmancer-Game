@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c3hasx7qafvcw" path="res://_Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c8mpe4b4nhbaq" path="res://Assets/Sprite-0004.png" id="2_cvnsp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 17.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1798557799]
 physics_interpolation_mode = 1
@@ -15,6 +15,6 @@ position = Vector2(3, -2)
 texture = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=161442825]
-shape = SubResource("CircleShape2D_cvnsp")
+shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="WeaponSocket" type="Marker2D" parent="." unique_id=668079680]
