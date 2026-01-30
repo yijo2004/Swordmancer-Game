@@ -49,6 +49,14 @@ func state_move(delta: float) -> void:
 	# We rotate the SOCKET, so the weapon follows the mouse
 	weapon_socket.look_at(get_global_mouse_position())
 	
+	# Flip both player sprite and weapon sprite depending on mouse position relative to screen
+	if get_global_mouse_position().x < global_position.x:
+		weapon_socket.scale.y = -1
+		sprite.scale.x = -1
+	else: 
+		weapon_socket.scale.y = 1
+		sprite.scale.x = 1
+	
 	# 2. Movement Input
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	

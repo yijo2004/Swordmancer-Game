@@ -7,11 +7,16 @@ extends Node2D
 
 @onready var anim_player = $AnimationPlayer
 @onready var hitbox = $Hitbox
+@onready var vfx = $VFX
 
 signal attack_finished
 
 var is_attacking: bool = false
 
+func _ready() -> void:
+	if vfx.is_visible_in_tree():
+		vfx.visible = false
+	
 func attack() -> void:
 	if is_attacking:
 		return
