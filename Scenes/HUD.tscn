@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpl24jrh182us"]
+
+[ext_resource type="Script" uid="uid://do2gtuvi58sbf" path="res://_Scripts/hud.gd" id="1_sd512"]
+
+[node name="HUD" type="CanvasLayer" unique_id=2139640349]
+script = ExtResource("1_sd512")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1680915317]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer" unique_id=573992928]
+layout_mode = 2
+
+[node name="StaminaLabel" type="Label" parent="VBoxContainer" unique_id=47758571]
+layout_mode = 2
+
+[node name="ManaLabel" type="Label" parent="VBoxContainer" unique_id=1856010651]
+layout_mode = 2

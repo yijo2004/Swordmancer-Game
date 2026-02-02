@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c3hasx7qafvcw" path="res://_Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c8mpe4b4nhbaq" path="res://Assets/Sprite-0004.png" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://rttqcotifgxo" path="res://_Scripts/stats_data.gd" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bpl24jrh182us" path="res://Scenes/HUD.tscn" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
 radius = 8.0
@@ -18,3 +20,9 @@ texture = ExtResource("2_cvnsp")
 shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="WeaponSocket" type="Marker2D" parent="." unique_id=668079680]
+
+[node name="Stats" type="Node" parent="." unique_id=590511639]
+script = ExtResource("3_6t5aa")
+max_mana = 3.0
+
+[node name="HUD" parent="." unique_id=2139640349 instance=ExtResource("4_vgqql")]

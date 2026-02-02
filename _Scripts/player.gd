@@ -12,24 +12,32 @@ extends CharacterBody2D
 @export var dash_cooldown: float = 0.8
 
 # --- COMPONENT REFERENCES ---
-# The socket where we spawn weapons
 @onready var weapon_socket: Marker2D = $WeaponSocket 
-# The sprite for "Juice" effects (bobbing/squashing)
 @onready var sprite: Sprite2D = $Sprite2D 
+@onready var stats: Stats = $Stats
+@onready var hud: CanvasLayer = $HUD
 
 # --- STATE MACHINE ---
 enum State { MOVE, DASH, ATTACK }
 var current_state: State = State.MOVE
 
 # --- RUNTIME VARIABLES ---
-var current_weapon: Node2D = null # Polymorphic: Can be Sword, Spear, Wand, etc.
+var current_weapon: Node2D = null
 var dash_timer: float = 0.0
 var can_dash: bool = true
 var walk_bob_timer: float = 0.0
 
 func _ready() -> void:
-	# Load the sword by default. 
-	# In the future, this is where you'd load from a Save File or Inventory.
+	# Signals to update HUD
+	stats.health_changed.connect(hud.update_health)
+	stats.stamina_changed.connect(hud.update_stamina)
+	stats.mana_changed.connect(hud.update_mana)
+	# Initialize HUD
+	hud.update_health(stats.health, stats.max_health)
+	hud.update_stamina(stats.stamina, stats.max_stamina)
+	hud.update_mana(stats.mana, stats.max_mana)
+	
+	# In the future, this is where we load from a Save File or Inventory.
 	equip_weapon(preload("res://Scenes/Weapons/sword.tscn"))
 
 func _physics_process(delta: float) -> void:
@@ -74,6 +82,8 @@ func state_move(delta: float) -> void:
 
 # --- STATE: DASH ---
 func start_dash() -> void:
+	if not stats.spend_stamina(1.0):
+		return
 	current_state = State.DASH
 	dash_timer = dash_duration
 	can_dash = false
@@ -133,6 +143,7 @@ func equip_weapon(weapon_scene: PackedScene) -> void:
 	var new_weapon = weapon_scene.instantiate()
 	weapon_socket.add_child(new_weapon)
 	current_weapon = new_weapon
+	current_weapon.wielder = self
 	
 	# 3. Connect signals (Observer Pattern)
 	# This listens for the "attack_finished" signal we created in weapon.gd

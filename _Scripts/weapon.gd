@@ -4,6 +4,7 @@ extends Node2D
 @export var damage: int = 10
 @export var cooldown: float = 0.5
 @export var knockback: float = 300.0
+@export var mana_gain_on_hit: float = 1.0;
 
 @onready var anim_player = $AnimationPlayer
 @onready var hitbox = $Hitbox
@@ -12,6 +13,8 @@ extends Node2D
 signal attack_finished
 
 var is_attacking: bool = false
+
+var wielder: CharacterBody2D
 
 func _ready() -> void:
 	if vfx.is_visible_in_tree():
@@ -38,3 +41,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	is_attacking = false
 	attack_finished.emit()
+	
+	if wielder.has_node("Stats"):
+		wielder.get_node("Stats").gain_mana(mana_gain_on_hit)
