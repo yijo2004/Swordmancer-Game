@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://byp3dirn2ih7"]
+
+[ext_resource type="Script" uid="uid://t00ae5ypf4bk" path="res://Scenes/Enemies/enemy.gd" id="1_jcvw6"]
+[ext_resource type="Texture2D" uid="uid://byq27vipirxu2" path="res://Assets/Sprites/Slime_JE3_BE2.webp" id="2_x1rqp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 176.88
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
+radius = 43.826324
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1557205180]
+script = ExtResource("1_jcvw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545957550]
+position = Vector2(0, -15)
+scale = Vector2(0.06500002, 0.06500002)
+texture = ExtResource("2_x1rqp")
+
+[node name="Detection_Area" type="Area2D" parent="." unique_id=80163929]
+position = Vector2(-1.5258789e-05, -2.0000153)
+scale = Vector2(0.5025, 0.5025)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area" unique_id=1033299740]
+position = Vector2(4.5776367e-05, 3.9801178)
+shape = SubResource("CircleShape2D_1f0kj")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=480996072]
+position = Vector2(-5.9604645e-08, -14)
+scale = Vector2(0.5025, 0.5025)
+shape = SubResource("CircleShape2D_afpow")
+
+[connection signal="body_entered" from="Detection_Area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Detection_Area" to="." method="_on_detection_area_body_exited"]
