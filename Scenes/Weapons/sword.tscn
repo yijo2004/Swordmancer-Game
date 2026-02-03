@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7bmw54140ch3"]
 
 [ext_resource type="PackedScene" uid="uid://d0g6tr28kkt24" path="res://Scenes/Weapon.tscn" id="1_6wdhb"]
-[ext_resource type="Texture2D" uid="uid://clyl1yejgr6v6" path="res://Assets/sword.png" id="2_d6wag"]
+[ext_resource type="Texture2D" uid="uid://clyl1yejgr6v6" path="res://Assets/Sprites/sword.png" id="2_d6wag"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v4uo3"]
 load_path = "res://.godot/imported/sprite-sheet.png-395adc231d9bfc041e14ebab3099fc36.ctex"

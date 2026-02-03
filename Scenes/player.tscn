@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtqlell30el1t"]
 
 [ext_resource type="Script" uid="uid://c3hasx7qafvcw" path="res://_Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://c8mpe4b4nhbaq" path="res://Assets/Sprite-0004.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c8mpe4b4nhbaq" path="res://Assets/Sprites/Sprite-0004.png" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://rttqcotifgxo" path="res://_Scripts/stats_data.gd" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bpl24jrh182us" path="res://Scenes/HUD.tscn" id="4_vgqql"]
 
@@ -10,6 +10,8 @@ radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1798557799]
 physics_interpolation_mode = 1
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378997867]
