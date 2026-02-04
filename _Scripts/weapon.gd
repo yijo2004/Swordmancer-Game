@@ -22,17 +22,27 @@ func _ready() -> void:
 		vfx.visible = false
 	
 func attack() -> void:
+	var overlapping_obj = $Hitbox.get_overlapping_areas()
+	print("performing attack")
+	
 	if is_attacking:
 		return
 	
 	if anim_player.has_animation("attack"):
+		for area in overlapping_obj:
+			var parent = area.get_parent()
+			print(parent.name)
+			
 		is_attacking = true
 		anim_player.play("attack")
+		
+		
 	else:
 		printerr("ERROR: Animation 'attack' not found on ", name)
 		# Force finish so the player doesn't get stuck
 		_on_animation_player_animation_finished("none")
 	
+	# rework hitbox and hurtbox functions
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	print("taken damage")
 	if body.has_method("take_damage"):

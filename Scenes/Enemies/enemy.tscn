@@ -10,7 +10,7 @@ radius = 272.63678
 radius = 57.711437
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1557205180]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_jcvw6")
 
@@ -22,13 +22,15 @@ texture = ExtResource("2_x1rqp")
 [node name="Detection_Area" type="Area2D" parent="." unique_id=80163929]
 position = Vector2(-1.5258789e-05, -2.0000153)
 scale = Vector2(0.5025, 0.5025)
+collision_layer = 17
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area" unique_id=1033299740]
 position = Vector2(4.5776367e-05, 3.9801178)
 shape = SubResource("CircleShape2D_1f0kj")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=480996072]
-position = Vector2(-2.1175824e-22, -15)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=480996072]
+position = Vector2(1.9999999, -12)
 scale = Vector2(0.5025, 0.5025)
 shape = SubResource("CircleShape2D_afpow")
 
