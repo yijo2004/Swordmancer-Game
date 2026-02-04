@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var health = 5
 var speed = 25
 var chasePlayer = false
 var player = null
@@ -27,3 +28,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	chasePlayer = false
+	
+	
+	
+func take_damage(damage: int) -> void:
+	health -= damage
+	if health <= 0:
+		queue_free()

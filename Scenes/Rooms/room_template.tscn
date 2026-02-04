@@ -41,7 +41,6 @@ rotation = -3.1415927
 polygon = PackedVector2Array(32.000023, -257, 32.000015, -159, 63, -130, 191, -128, 191, -63, 223, -30.99998, 320, -30.999971, 320, -261)
 
 [node name="Entrance_North" type="Node2D" parent="." unique_id=223597656]
-visible = false
 script = ExtResource("2_11dti")
 direction = Vector2(0, -1)
 
