@@ -33,8 +33,8 @@ func attack() -> void:
 		# Force finish so the player doesn't get stuck
 		_on_animation_player_animation_finished("none")
 	
-
 func _on_hitbox_body_entered(body: Node2D) -> void:
+	print("taken damage")
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 		dealt_damage.emit()

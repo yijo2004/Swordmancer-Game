@@ -35,6 +35,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	
 	
 func take_damage(damage: int) -> void:
+	print("taken damage")
 	health -= damage
 	if health <= 0:
 		queue_free()
