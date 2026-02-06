@@ -25,8 +25,6 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	chasePlayer = true
 	
-
-
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body == player:
 		player = null
