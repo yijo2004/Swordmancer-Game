@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var health = 5
-var speed = 25
+@export var speed = 25
 var chasePlayer = false
 var player = null
 

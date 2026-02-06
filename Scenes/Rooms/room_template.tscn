@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://_Scripts/room.gd" id="1_11dti"]
 [ext_resource type="TileSet" uid="uid://b370qooc4uvmc" path="res://Sprites/tile_set.tres" id="1_ka8xt"]
 [ext_resource type="Script" path="res://_Scripts/room_entrance.gd" id="2_11dti"]
-[ext_resource type="PackedScene" uid="uid://byp3dirn2ih7" path="res://Scenes/Enemies/enemy.tscn" id="4_s3j8h"]
+[ext_resource type="PackedScene" uid="uid://d0hjwelbmdmmy" path="res://Scenes/Enemies/Slime.tscn" id="4_s3j8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45d1s"]
 radius = 19.026299
@@ -168,4 +168,4 @@ position = Vector2(-30.00001, -91)
 shape = SubResource("RectangleShape2D_y7y61")
 
 [node name="Enemy" parent="." unique_id=1557205180 instance=ExtResource("4_s3j8h")]
-position = Vector2(-153, -93)
+position = Vector2(-147, -86)

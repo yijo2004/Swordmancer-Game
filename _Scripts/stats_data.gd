@@ -1,7 +1,7 @@
 class_name Stats
 extends Node
 
-@export_group("Helath (Hearts)")
+@export_group("Health (Hearts)")
 @export var max_health: int = 3
 @export var start_health: int = 3
 

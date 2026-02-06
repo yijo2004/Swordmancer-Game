@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d0hjwelbmdmmy"]
+
+[ext_resource type="PackedScene" uid="uid://byp3dirn2ih7" path="res://Scenes/Enemies/enemy.tscn" id="1_jvx6n"]
+[ext_resource type="Texture2D" uid="uid://byq27vipirxu2" path="res://Assets/Sprites/Slime_JE3_BE2.webp" id="2_kexyb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvx6n"]
+radius = 232.84431
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kexyb"]
+radius = 53.768177
+
+[node name="Enemy" unique_id=1557205180 instance=ExtResource("1_jvx6n")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1545957550]
+position = Vector2(0, -11.000006)
+scale = Vector2(0.06, 0.052473407)
+texture = ExtResource("2_kexyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area" parent_id_path=PackedInt32Array(80163929) index="0" unique_id=27268345]
+position = Vector2(3.0365749e-05, 3.98013)
+shape = SubResource("CircleShape2D_jvx6n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" parent_id_path=PackedInt32Array(761578948) index="0" unique_id=2116752346]
+position = Vector2(0, -21.890543)
+shape = SubResource("CircleShape2D_kexyb")

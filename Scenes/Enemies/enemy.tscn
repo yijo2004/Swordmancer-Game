@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://byp3dirn2ih7"]
 
 [ext_resource type="Script" uid="uid://t00ae5ypf4bk" path="res://_Scripts/enemy.gd" id="1_jcvw6"]
-[ext_resource type="Texture2D" uid="uid://byq27vipirxu2" path="res://Assets/Sprites/Slime_JE3_BE2.webp" id="2_x1rqp"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
-radius = 272.63678
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
-radius = 57.711437
+[ext_resource type="Texture2D" uid="uid://cvos4ggk1nfdy" path="res://icon.svg" id="2_jcvw6"]
+[ext_resource type="Script" uid="uid://rttqcotifgxo" path="res://_Scripts/stats_data.gd" id="3_x1rqp"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1557205180]
 collision_layer = 0
@@ -15,9 +10,9 @@ collision_mask = 16
 script = ExtResource("1_jcvw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545957550]
-position = Vector2(0, -15)
-scale = Vector2(0.06500002, 0.06500002)
-texture = ExtResource("2_x1rqp")
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(0.25906253, 0.23584901)
+texture = ExtResource("2_jcvw6")
 
 [node name="Detection_Area" type="Area2D" parent="." unique_id=80163929]
 position = Vector2(-1.5258789e-05, -2.0000153)
@@ -25,14 +20,13 @@ scale = Vector2(0.5025, 0.5025)
 collision_layer = 17
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area" unique_id=1033299740]
-position = Vector2(4.5776367e-05, 3.9801178)
-shape = SubResource("CircleShape2D_1f0kj")
+[node name="Stats" type="Node" parent="." unique_id=1433141996]
+script = ExtResource("3_x1rqp")
+max_mana = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=480996072]
-position = Vector2(1.9999999, -12)
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=761578948]
+position = Vector2(0, -9.536743e-07)
 scale = Vector2(0.5025, 0.5025)
-shape = SubResource("CircleShape2D_afpow")
 
 [connection signal="body_entered" from="Detection_Area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Detection_Area" to="." method="_on_detection_area_body_exited"]

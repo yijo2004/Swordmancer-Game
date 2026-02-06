@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0g6tr28kkt24"]
 
 [ext_resource type="Script" uid="uid://dqdprrwhl20xm" path="res://_Scripts/weapon.gd" id="1_m5ws0"]
+[ext_resource type="Script" uid="uid://cwktp06llk7qw" path="res://Scenes/hitbox.gd" id="2_sw2lr"]
 
 [node name="Weapon" type="Node2D" unique_id=1236962454]
 script = ExtResource("1_m5ws0")
@@ -9,7 +10,8 @@ script = ExtResource("1_m5ws0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=913103793]
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=2132603599]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=2132603599]
 collision_mask = 16
+script = ExtResource("2_sw2lr")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
