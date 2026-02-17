@@ -10,8 +10,8 @@ radius = 272.63678
 radius = 43.826324
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1557205180]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_jcvw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545957550]

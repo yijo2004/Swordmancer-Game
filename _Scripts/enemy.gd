@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var health = 5
+@export var stop_distance = 10
 var speed = 25
 var chasePlayer = false
 var player = null
@@ -9,12 +10,11 @@ func _physics_process(_delta: float) -> void:
 	if chasePlayer and player:
 		var direction = (player.global_position - global_position).normalized()
 		
-		if global_position.distance_to(player.global_position) > 10:
+		if global_position.distance_to(player.global_position) > stop_distance:
 			velocity = direction * speed
+			$Sprite2D.flip_h = direction.x < 0
 		else:
 			velocity = Vector2.ZERO
-			
-		$Sprite2D.flip_h = direction.x < 0
 	else:
 		velocity = Vector2.ZERO
 	
@@ -22,9 +22,9 @@ func _physics_process(_delta: float) -> void:
 
 	
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	player = body
-	chasePlayer = true
-	
+	if body.is_in_group("player"):
+		player = body
+		chasePlayer = true
 
 
 func _on_detection_area_body_exited(body: Node2D) -> void:

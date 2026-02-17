@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Swordmancer Game"
 
+[global_group]
+
+player="Group for player"
+enemy="enemy group"
+
 [input]
 
 move_up={
