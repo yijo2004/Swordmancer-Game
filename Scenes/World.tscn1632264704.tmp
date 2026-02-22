@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://birvxciwqfi4r"]
+
+[ext_resource type="PackedScene" uid="uid://dtqlell30el1t" path="res://Scenes/player.tscn" id="1_5cjrv"]
+[ext_resource type="PackedScene" uid="uid://d3cqtcfm7fccn" path="res://Scenes/MainCamera.tscn" id="1_5nsto"]
+[ext_resource type="Script" uid="uid://d2svfc7ur7moh" path="res://_Scripts/room_generation.gd" id="1_gjpho"]
+
+[node name="World" type="Node2D" unique_id=837482538]
+
+[node name="RoomGeneration" type="Node" parent="." unique_id=92138423 node_paths=PackedStringArray("player")]
+script = ExtResource("1_gjpho")
+player = NodePath("../Player")
+
+[node name="MainCamera" parent="." unique_id=118585489 node_paths=PackedStringArray("target") instance=ExtResource("1_5nsto")]
+visible = false
+position = Vector2(289, 63)
+zoom = Vector2(2, 2)
+target = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1798557799 instance=ExtResource("1_5cjrv")]
+top_level = true

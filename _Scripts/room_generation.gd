@@ -3,19 +3,39 @@ extends Node
 
 @export var map_size : int = 7
 @export var rooms_to_generate : int = 12
-@export var room_pos_offset : Vector2 = Vector2(640, 512) 
+
+var room_pos_offset : Vector2 = Vector2(640, 512) # 32 px per tile
+var bigger_room_pos_offset : Vector2 = Vector2(704, 608)
 
 var room_count : int = 0
 var map : Array[bool]
 var rooms : Array[Room] # Stores the actual room instances
 
-var room_scene : PackedScene = preload("res://Scenes/Rooms/room_template.tscn")
+var rooms_folder : String = "res://Scenes/Rooms/"
+var room_dictionary : Dictionary = {}
 
 # Drag your Player node here in the Inspector!
 @export var player : CharacterBody2D 
 
 func _ready():
+	_load_room_scenes()
 	_generate()
+	
+func _load_room_scenes():
+	var dir = DirAccess.open(rooms_folder)
+	
+	if dir:
+		for file in dir.get_files():
+			var clean_name = file.replace(".remap", "") # Required for exported builds
+			
+			if clean_name.ends_with(".tscn"):
+				var room_key = clean_name.get_basename() # e.g., "room_template" or "room2"
+				var full_path = rooms_folder.path_join(clean_name)
+				
+				# Load and store the PackedScene
+				room_dictionary[room_key] = ResourceLoader.load(full_path)
+	else:
+		push_error("Could not open rooms directory: " + rooms_folder)
 
 func _generate():
 	# 1. Cleanup
@@ -63,14 +83,23 @@ func _instantiate_rooms():
 			if not _get_map(x, y):
 				continue
 			
-			var room = room_scene.instantiate()
+			var random_float = randf() * 100 # Percentage of bigger rooms
+			var room
+			if random_float <= 50:
+				room = room_dictionary["bigger_room"].instantiate()
+			else:
+				room = room_dictionary["base_room"].instantiate()
 			call_deferred("add_child", room)
 			rooms.append(room)
 			
 			# Store the grid coordinates ON the room so we can use them later
 			# You can add "var grid_pos : Vector2" to room.gd if you want, 
 			# but strictly speaking we can calculate positions without it.
-			room.global_position = Vector2(x, y) * room_pos_offset
+			if random_float <= 10:
+				room.global_position = Vector2(x, y) * bigger_room_pos_offset
+			else:
+				room.global_position = Vector2(x, y) * room_pos_offset
+			
 			
 			# Give the room a name so we can find it easily if debugging
 			room.name = "Room_%d_%d" % [x, y]

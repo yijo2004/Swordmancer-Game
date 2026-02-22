@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://f5gda2rxqhga"]
 
-[ext_resource type="Script" path="res://_Scripts/room.gd" id="1_11dti"]
+[ext_resource type="Script" uid="uid://cve10rbxqr47x" path="res://_Scripts/room.gd" id="1_11dti"]
 [ext_resource type="TileSet" uid="uid://b370qooc4uvmc" path="res://Sprites/tile_set.tres" id="1_ka8xt"]
-[ext_resource type="Script" path="res://_Scripts/room_entrance.gd" id="2_11dti"]
+[ext_resource type="Script" uid="uid://dyo2jswx2muwx" path="res://_Scripts/room_entrance.gd" id="2_11dti"]
 [ext_resource type="PackedScene" uid="uid://byp3dirn2ih7" path="res://Scenes/Enemies/enemy.tscn" id="4_s3j8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45d1s"]
@@ -72,7 +72,6 @@ position = Vector2(-0.5, -26.5)
 shape = SubResource("RectangleShape2D_y7y61")
 
 [node name="Entrance_South" type="Node2D" parent="." unique_id=1751768706]
-visible = false
 rotation = -3.1415927
 script = ExtResource("2_11dti")
 direction = Vector2(0, 1)
