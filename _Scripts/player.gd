@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var dash_duration: float = 0.15
 @export var dash_cooldown: float = 0.8
 
+@export var invincible_duration: float = 1.0
+
 # --- COMPONENT REFERENCES ---
 @onready var weapon_socket: Marker2D = $WeaponSocket 
 @onready var sprite: Sprite2D = $Sprite2D 
@@ -20,18 +22,21 @@ extends CharacterBody2D
 # --- STATE MACHINE ---
 enum State { MOVE, DASH, ATTACK }
 var current_state: State = State.MOVE
+var game_over_scene: PackedScene = preload("res://Scenes/UI/game_over.tscn")
 
 # --- RUNTIME VARIABLES ---
 var current_weapon: Node2D = null
 var dash_timer: float = 0.0
 var can_dash: bool = true
 var walk_bob_timer: float = 0.0
+var is_invincible: bool = false
 
 func _ready() -> void:
 	# Signals to update HUD
 	stats.health_changed.connect(hud.update_health)
 	stats.stamina_changed.connect(hud.update_stamina)
 	stats.mana_changed.connect(hud.update_mana)
+	stats.died.connect(_on_player_died)
 	# Initialize HUD
 	hud.update_health(stats.health, stats.max_health)
 	hud.update_stamina(stats.stamina, stats.max_stamina)
@@ -152,3 +157,27 @@ func equip_weapon(weapon_scene: PackedScene) -> void:
 
 func _on_weapon_finished() -> void:
 	current_state = State.MOVE
+
+
+# --- DAMAGE SYSTEM ---
+func take_damage(amount: int, source_position: Vector2) -> void:
+	if is_invincible:
+		return
+	
+	stats.take_damage(amount)
+	
+	var knockback_direction = (global_position - source_position).normalized()
+	velocity = knockback_direction * 300.0
+
+	is_invincible = true
+
+	var tween = create_tween()
+	for i in range(5):
+		tween.tween_property(sprite, "modulate:a", 0.3, 0.1)
+		tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
+
+	get_tree().create_timer(invincible_duration).timeout.connect(func(): is_invincible = false)
+	
+func _on_player_died() -> void:
+	var game_over = game_over_scene.instantiate()
+	get_tree().current_scene.add_child(game_over)

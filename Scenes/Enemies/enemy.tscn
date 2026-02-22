@@ -9,9 +9,13 @@ radius = 272.63678
 [sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
 radius = 43.826324
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
+radius = 27.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1557205180]
 collision_layer = 4
 collision_mask = 3
+platform_floor_layers = 4294967040
 script = ExtResource("1_jcvw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545957550]
@@ -20,17 +24,29 @@ scale = Vector2(0.06500002, 0.06500002)
 texture = ExtResource("2_x1rqp")
 
 [node name="Detection_Area" type="Area2D" parent="." unique_id=80163929]
+visible = false
 position = Vector2(-1.5258789e-05, -2.0000153)
 scale = Vector2(0.5025, 0.5025)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area" unique_id=1033299740]
+visible = false
 position = Vector2(4.5776367e-05, 3.9801178)
 shape = SubResource("CircleShape2D_1f0kj")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=480996072]
+visible = false
 position = Vector2(-2.1175824e-22, -15)
 scale = Vector2(0.5025, 0.5025)
 shape = SubResource("CircleShape2D_afpow")
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=1727801682]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2061701818]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_jcvw6")
+
 [connection signal="body_entered" from="Detection_Area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Detection_Area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

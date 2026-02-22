@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cipmgcabl7hus"]
+
+[ext_resource type="Script" uid="uid://oa0wg05b85w3" path="res://_Scripts/game_over.gd" id="1_jxkuk"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1412723919]
+script = ExtResource("1_jxkuk")
+
+[node name="Control" type="Control" parent="." unique_id=622594416]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1672725726]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1455952268]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -46.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=1548966503]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="Control/VBoxContainer" unique_id=99475385]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer" unique_id=867994254]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Control/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
